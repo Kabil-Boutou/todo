@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import Input from '../../ui-kit/input';
 import Button from '../../ui-kit/button';
-import { useDispatch, useStore } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-export default ({ todos }) => {
+export default () => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -23,9 +23,6 @@ export default ({ todos }) => {
     <form onSubmit={formik.handleSubmit}>
       <Input id='todo' name='todo' type='text' onChange={formik.handleChange} value={formik.values.todo} />
       <Input value='submit' type='submit' />
-      {todos.map(({ todo }) => {
-        return <h2>{todo.label}</h2>;
-      })}
     </form>
   );
 };
